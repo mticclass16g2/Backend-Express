@@ -1,7 +1,7 @@
 const express = require("express");
 const Dbconnection = require("./database/dbConnection");
 const UsuarioRegistroRouter = require("./routers/usuarioRegistroRuter");
-
+const ServicioRegistroRouter = require("./routers/usuarioRegistroRuter");
 
 
 
@@ -20,18 +20,19 @@ class Server{
         router.get('/',(req,res)=>{
             res.status(200).json({Message: "Corriendo el Servidor"});
         });
-        /***********CREAMOS LAS OTRAS RUTAS DIFERENTES A LA RAIZ*************/
+        /***********CREAR LAS OTRAS RUTAS DIFERENTES A LA RAIZ*************/
         const usuarioRegistoRouter = new UsuarioRegistroRouter();
-        
+        const servicioRegistoRouter = new ServicioRegistroRouter();
 
         /********AÑADIMOS RUTAS*********/
         this.app.use(router);
         this.app.use(usuarioRegistoRouter.router);
-
+        this.app.use(servicioRegistoRouter.router);
         /*******LWVANTAR EL SERVIDOR********/
         this.app.listen(this.app.get('port'), ()=>{
             console.log("Corriendo por el puerto =>", this.app.get('port'));
         })
     }
 }
+
 new Server();
