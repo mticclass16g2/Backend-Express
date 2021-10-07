@@ -1,5 +1,6 @@
 const express = require("express");
 const Dbconnection = require("./database/dbConnection");
+const ServicioRegistroRouter = require("./routers/servicioRegistroRouter");
 const UsuarioRegistroRouter = require("./routers/usuarioRegistroRuter");
 
 
@@ -22,11 +23,12 @@ class Server{
         });
         /***********CREAMOS LAS OTRAS RUTAS DIFERENTES A LA RAIZ*************/
         const usuarioRegistoRouter = new UsuarioRegistroRouter();
-        
+        const servicioRegistroRouter = new ServicioRegistroRouter();
 
         /********AÑADIMOS RUTAS*********/
         this.app.use(router);
         this.app.use(usuarioRegistoRouter.router);
+        this.app.use(servicioRegistroRouter.router);
 
         /*******LWVANTAR EL SERVIDOR********/
         this.app.listen(this.app.get('port'), ()=>{
