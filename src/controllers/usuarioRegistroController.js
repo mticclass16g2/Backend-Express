@@ -9,7 +9,9 @@ class UsuarioRegistroController {
     registrarUsuarios(req, res) {
         let correo = req.body.correo_electronico;
         usuarioRegistro.findOne({correo_electronico: correo},(error, data)=>{
+            console.log(data);
             if(data == null){
+
                 usuarioRegistro.create(req.body, (error, data) => {
                     if (error) {
                         res.status(400).json({ error });
