@@ -33,13 +33,13 @@ class UsuarioRegistroController {
     logging(req,res){
         let correo = req.body.correo_electronico;
         let c = req.body.contraseña;
-        console.log(correo,c,"primero");
+        //console.log(correo,c,"primero");
         usuarioRegistro.findOne({correo_electronico: correo},(error, data)=>{
-            console.log(data.correo_electronico, data.contraseña,"Segundo")
+            //console.log(data.correo_electronico, data.contraseña,"Segundo")
             if(data == null){
                 res.status(200).json({message: "El usuario ingresado no existe. Por favor registrarse."});
             }
-            if(error){
+            else if(error){
                 console.log("Aqui esta el error")
                 res.status(400).json(error);
             }
