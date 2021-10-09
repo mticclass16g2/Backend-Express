@@ -30,26 +30,28 @@ class UsuarioRegistroController {
     }
     logging(req,res){
         let correo = req.body.correo_electronico;
-        let c = req.bod.contraseña;
+        let c = req.body.contraseña;
+        console.log(correo,c,"primero");
         usuarioRegistro.findOne({correo_electronico: correo},(error, data)=>{
+            console.log(data.correo_electronico, data.contraseña,"Segundo")
             if(data == null){
-                res.status(200).json({message: "El usuario ingresado no existe."});
+                res.status(200).json({message: "El usuario ingresado no existe. Por favor registrarse."});
             }
-            if(data){
-                if(usuarioRegistro.contraseña == c ){
+            if(error){
+                console.log("Aqui esta el error")
+                res.status(400).json(error);
+            }
+            else{
+                if(data.contraseña == c ){
                     res.status(200).json({message: "Longging correcto."});
                 }
                 else{
-                    res.status().json({message: "Contraseña incorrecta."});
+                    res.status(200).json({message: "Contraseña incorrecta."});
                 } 
-            }
-            else{
-                res.status(400).json(error);
             }
         })
     
     }
-
     obtenerUsuarios(req,res){
         usuarioRegistro.find((error,data)=>{
             if(error){
@@ -59,6 +61,7 @@ class UsuarioRegistroController {
                 res.status(201).json({message: "Base de datos vacia..."});
             }
             else{
+                console.log("Estamos aqui, la base de datos vacia");
                 res.status(200).json(data);
             }
         });
