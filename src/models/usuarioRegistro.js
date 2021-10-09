@@ -25,6 +25,9 @@ const usuarioSchema = new Schema({
     },
     ciudad:{
         type: String
+    },
+    rol:{
+        type: String
     }
 
 },{

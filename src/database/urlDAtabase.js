@@ -1,3 +1,3 @@
 module.exports = {
-    db: "mongodb://localhost:27017/backend"
+    db: "mongodb+srv://reactivate:reactivate2021Gr2@cluster0.kj4gr.mongodb.net/ReactivateDB?retryWrites=true&w=majority"
 }

@@ -7,13 +7,27 @@ class UsuarioRegistroController {
 
 
     registrarUsuarios(req, res) {
-        usuarioRegistro.create(req.body, (error, data) => {
-            if (error) {
-                res.status(400).json({ error });
-            } else {
-                res.status(201).json(data);
+        let correo = req.body.correo_electronico;
+        usuarioRegistro.findOne({correo_electronico: correo},(error, data)=>{
+            if(data == null){
+                usuarioRegistro.create(req.body, (error, data) => {
+                    if (error) {
+                        res.status(400).json({ error });
+                    } else {
+                        res.status(201).json(data);
+                    }
+                });
+            
+
             }
-        });
+            else if(error){
+                res.status(400).json({ error });
+            }
+            else{
+                res.status(400).json({message: "Usuario con Correo ya creado...."})
+            }
+        })
+        
     }
     obtenerUsuarios(req,res){
         usuarioRegistro.find((error,data)=>{
