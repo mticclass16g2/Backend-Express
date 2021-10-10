@@ -81,7 +81,8 @@ class UsuarioRegistroController {
     // PRUEBA DE OBTENER POR NOMBRE
     obtenerUsuarioName(req,res){
         let nom = req.body.nombre;
-        usuarioRegistro.findById({nombre: nom } ,(error,data)=>{
+        console.log(nom+"  Primero")
+        usuarioRegistro.find({nombre: nom},(error,data)=>{
             console.log(data)
             if(error){
                 res.status(401).json({message: "Error"});
