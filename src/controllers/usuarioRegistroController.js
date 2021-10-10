@@ -16,7 +16,7 @@ class UsuarioRegistroController {
                     if (error) {
                         res.status(400).json({ error });
                     } else {
-                        res.status(201).json(data);
+                        res.status(201).json({message: "El Usuario se ha creado con Exito."});
                     }
                 });
             }
@@ -108,10 +108,13 @@ class UsuarioRegistroController {
     eliminarUsuario(req,res){
         let {id} = req.body;
         usuarioRegistro.findByIdAndRemove(id,(error,data)=>{
-            if(error){
+            if(data == null){
+                res.status(200).json({message: "El ID: "+id+" no existe en la BD."})
+            }
+            else if(error){
                 res.status(500).send();
             }else{
-                res.status(200).json(data);
+                res.status(200).json({message: "El usuario con ID: "+ id +" Fue eliminado correctamente."});
             }
         })
     }
