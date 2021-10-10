@@ -48,7 +48,7 @@ class EntidadController{
                 res.status(400).json({message: "Error"});
             }
             else{
-                res.status(200).json(data);
+                res.status(200).json({message: "Los datos se han actualizado correctamente..."});
             }
         })
     }
