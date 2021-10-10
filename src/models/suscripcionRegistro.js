@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const entidadSchema = new Schema({
+const suscripcionSchema = new Schema({
     persona_id:{
         type: String
     },
@@ -28,9 +28,15 @@ const entidadSchema = new Schema({
     },
     urlInstagram:{
         type: String
+    },
+    nombre:{
+        type: String
+    },
+    categoria:{
+        type: String
     }
 },{
-    collection: 'entidades'
+    collection: 'suscripciones'
 });
 
-module.exports = mongoose.model('Entidad', entidadSchema);
+module.exports = mongoose.model('Suscripcion', suscripcionSchema);
