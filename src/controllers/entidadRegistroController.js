@@ -25,6 +25,17 @@ class EntidadController{
             }
         })
     }
+    obtenerEntidadesId(req,res){
+        let id = req.body.id;
+        entidad.findById(id,(error,data)=>{
+            if(error){
+                res.status(400).json({message: "Error"});
+            }
+            else{
+                res.status(200).json({data});
+            }
+        })
+    }
     editarEntidades(req,res){
         let {id, persona_id, companiaNombre, companiaLogo, servicio_id, ciudad_id, urlServicio, descripcionServicio, urlFacebook, urlInstagram} = req.body;
         let obj = {
