@@ -7,8 +7,8 @@ class UsuarioRegistroController {
 
 
     registrarUsuarios(req, res) {
-        let correo = req.body.correo_electronico;
-        usuarioRegistro.findOne({correo_electronico: correo},(error, data)=>{
+        let correo = req.body.email;
+        usuarioRegistro.findOne({email: correo},(error, data)=>{
             console.log(data);
             if(data == null){
 
@@ -31,10 +31,10 @@ class UsuarioRegistroController {
         
     }
     logging(req,res){
-        let correo = req.body.correo_electronico;
+        let correo = req.body.email;
         let c = req.body.contraseña;
         //console.log(correo,c,"primero");
-        usuarioRegistro.findOne({correo_electronico: correo},(error, data)=>{
+        usuarioRegistro.findOne({email: correo},(error, data)=>{
             //console.log(data.correo_electronico, data.contraseña,"Segundo")
             if(data == null){
                 res.status(200).json({message: "El usuario ingresado no existe. Por favor registrarse."});
@@ -80,8 +80,9 @@ class UsuarioRegistroController {
     }
     // PRUEBA DE OBTENER POR NOMBRE
     obtenerUsuarioName(req,res){
-        let nombre = req.body.nombre;
-        usuarioRegistro.findById(nombre,(error,data)=>{
+        let nom = req.body.nombre;
+        usuarioRegistro.findById({nombre: nom } ,(error,data)=>{
+            console.log(data)
             if(error){
                 res.status(401).json({message: "Error"});
             }else{

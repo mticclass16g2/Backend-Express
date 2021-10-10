@@ -2,10 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const suscripcionSchema = new Schema({
+    email:{
+        type: String
+    },
     persona_id:{
         type: String
     },
-    companiNombre:{
+    companiaNombre:{
         type: String
     },
     companiaLogo:{

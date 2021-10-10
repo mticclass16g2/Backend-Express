@@ -36,12 +36,25 @@ class SuscripcionController{
             }
         })
     }
+    obtenerSuscripcionEmail(req,res){
+        let email = req.body.email;
+        suscripcion.findById(email,(error,data)=>{
+            console.log(data);
+            if(error){
+                res.status(400).json({message: "Error"});
+            }
+            else{
+                res.status(200).json(data);
+            }
+        })
+    }
+
     editarSuscripcion(req,res){
-        let {id, persona_id, companiaNombre, companiaLogo, servicio_id, ciudad_id,
-            urlServicio, descripcionServicio, urlFacebook, urlInstagram} = req.body;
+        let {id,email, persona_id, companiaNombre, companiaLogo, servicio_id, ciudad_id,
+            urlServicio, descripcionServicio, urlFacebook, urlInstagram, nombre, categoria} = req.body;
         let obj = {
-            persona_id, companiaNombre, companiaLogo, servicio_id, ciudad_id, urlServicio,
-            descripcionServicio, urlFacebook, urlInstagram
+            email, persona_id, companiaNombre, companiaLogo, servicio_id, ciudad_id, urlServicio,
+            descripcionServicio, urlFacebook, urlInstagram, nombre, categoria
         } 
         suscripcion.findByIdAndUpdate(id,{
             $set: obj

@@ -9,7 +9,7 @@ const usuarioSchema = new Schema({
         type: String
     },
     doc_identidad:{
-        type: Number
+        type: String
     },
     email:{
         type: String
@@ -18,13 +18,13 @@ const usuarioSchema = new Schema({
         type: String
     },
     celular:{
-        type: Number
+        type: String
     },
     rol_id:{
-        type: String
+        type: Number
     },
     ciudad:{
-        type: String
+        type: Number
     },
     activo:{
         type: Number

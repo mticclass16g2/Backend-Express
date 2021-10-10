@@ -15,6 +15,7 @@ class SuscripcionRouter{
          this.router.put('/registo/suscripciones', objSuscripcionC.editarSuscripcion);
          this.router.delete('/registo/suscripciones', objSuscripcionC.eliminarSuscripcion);
          this.router.get('/registo/suscripcionesId', objSuscripcionC.obtenerSuscripcionId);
+         this.router.get('/registo/suscripcionesEmail', objSuscripcionC.obtenerSuscripcionEmail);
     }
 }
 module.exports = SuscripcionRouter;
