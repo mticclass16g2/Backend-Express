@@ -9,13 +9,13 @@ const usuarioSchema = new Schema({
         type: String
     },
     doc_identidad:{
-        type: String
+        type: String, required: [true, 'documento obligatorio..']
     },
     email:{
-        type: String
+        type: String, required: [true, 'Correo obligatorio..']
     },
     loginPassword:{
-        type: String
+        type: String, required: [true, 'Contraseña obligatoria..']
     },
     celular:{
         type: String
