@@ -3,7 +3,7 @@ const Dbconnection = require("./database/dbConnection");
 const ServicioRegistroRouter = require("./routers/servicioRegistroRouter");
 const UsuarioRegistroRouter = require("./routers/usuarioRegistroRuter");
 const SuscripcionRegistroRouter = require("./routers/suscripcionRegistroRouter");
-
+const cors = require('cors');
 
 
 class Server{
@@ -13,6 +13,8 @@ class Server{
         // CONSTRUIMOS UNA APLICACION EXPRES PARA MONTAR EL SERVIDOR
         this.app = express();
         // INDICAMOS EL PUERTO POR EL QUE VAMOS A TRABAJAR EN EL SERVIDOR LOCAL
+        //Para realizar solicitudes de un servidor externo e impedir el bloqueo por CORS.
+        this.app.use(cors());        
         this.app.set("port", process.env.PORT || 3000);
         // PROCESAREMOS DATOS EN FORMATO JSON
         this.app.use(express.json());
