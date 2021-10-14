@@ -30,7 +30,7 @@ class UsuarioRegistroController {
         })
         
     }
-    logging(req,res){
+    login(req,res){
         let correo = req.body.email;
         let c = req.body.contraseña;
         //console.log(correo,c,"primero");
@@ -45,7 +45,7 @@ class UsuarioRegistroController {
             }
             else{
                 if(data.contraseña == c ){
-                    res.status(200).json({message: "Longging correcto."});
+                    res.status(200).json({message: "Longin correcto."});
                 }
                 else{
                     res.status(200).json({message: "Contraseña incorrecta."});

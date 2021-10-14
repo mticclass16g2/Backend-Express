@@ -16,7 +16,7 @@ class UsuarioRegistroRouter{
         this.router.delete('/registro', NUsuarioRegistroC.eliminarUsuario);
         this.router.get('/registro/id', NUsuarioRegistroC.obtenerUsuarioId);
         this.router.get('/registro/nombre', NUsuarioRegistroC.obtenerUsuarioName);
-        this.router.post('/logging', NUsuarioRegistroC.logging);
+        this.router.get('/login', NUsuarioRegistroC.login);
 
     }
 }
