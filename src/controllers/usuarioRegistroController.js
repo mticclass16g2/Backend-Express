@@ -32,23 +32,23 @@ class UsuarioRegistroController {
     }
     login(req,res){
         let correo = req.body.email;
-        let c = req.body.contraseña;
+        let c = req.body.loginPassword;
         //console.log(correo,c,"primero");
         usuarioRegistro.findOne({email: correo},(error, data)=>{
             //console.log(data.correo_electronico, data.contraseña,"Segundo")
             if(data == null){
-                res.status(200).json({message: "El usuario ingresado no existe. Por favor registrarse."});
+                res.status(400).json({message: "El usuario ingresado no existe. Por favor registrarse."});
             }
             else if(error){
                 console.log("Aqui esta el error")
                 res.status(400).json(error);
             }
             else{
-                if(data.contraseña == c ){
+                if(data.loginPassword == c ){
                     res.status(200).json({message: "Longin correcto."});
                 }
                 else{
-                    res.status(200).json({message: "Contraseña incorrecta."});
+                    res.status(400).json({message: "Contraseña incorrecta."});
                 } 
             }
         })
